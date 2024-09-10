@@ -1,0 +1,44 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+<div class='inline-flex items-center size-full top-0 bg-black'>
+            <div class="top-0 size-full" >
+                <h1 class="text-center size-full bg-black top-0 text-white text-5xl" style="font-family : ""Cyber""sans-serif;">Cyberpunk Radio </h1>
+            </div>
+           
+      </div>
+        <div>
+            <div class="inline-flex items-center size-full static top-0 right-0 place-content-end"style="padding : 12px;">
+            <img src={{ asset('images/cyberpunk-logo.jpg') }} alt="Cyberpunk logo" style = "width : 40%; height : auto; display: block; margin: 0px auto;">
+                    <button class="cybr-btn">
+                    S'inscrire<span aria-hidden>_</span>
+                    <span class="cybr-btn__glitch">S'inscrire</span>
+                    <span class="cybr-btn__tag">R25</span>
+                    </button>
+                    <br></br>
+
+                <div style="padding : 10px;">
+
+                </div>
+
+                    <button class="cybr-btn">
+                    Se connecter<span aria-hidden>_</span>
+                    <span class="cybr-btn__glitch">Se connecter</span>
+                    <span class="cybr-btn__tag">R25</span>
+                    </button>
+                <div style="padding : 10px;">
+
+                </div>
+            </div>
+        </div>
+<h1>Ce site est destiné à être un simulateur de radio du jeu Cyberpunk 2077.</h1>
+<div class="relative h-32 w-32 left-0 top-0">
+    <div class="absolute left-0 top-0">
+        <ul class="list-disc">
+        <li>Radio en continue, musique aléatoire, connexion non requise</li>
+        <li>Choix de la radio, musique aléatoire</li>
+        <li>Création de playlist personnalisée</li>
+        </ul>
+    </div>
+</div>
+{% endblock %}

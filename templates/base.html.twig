@@ -1,0 +1,24 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="UTF-8">
+        <title>{% block title %}Cyberpunk Radio{% endblock %}</title>
+        <link rel="icon" href={{ asset('images/samurai-logo.webp') }}>
+        <link rel="stylesheet" href="{{ asset('styles/app.css') }}">
+        <!--
+        <img src={{ asset("images/radio-icon-vector-illustration-removebg-preview.png") }}
+            style="width : 10%; height : auto;">
+        <img src={{ asset('images/radio-logo.png') }}
+        -->
+        {% block stylesheets %}
+        {% endblock %}
+
+        {% block javascripts %}
+            {% block importmap %}{{ importmap('app') }}{% endblock %}
+        {% endblock %}
+    </head>
+    <body style='justify-content: start; background: linear-gradient(90deg, #FFF001 70%, #e6de00 70%), #fff700;'>
+      
+    {% block body %}{% endblock %}
+    </body>
+</html>

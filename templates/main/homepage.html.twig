@@ -10,22 +10,26 @@
     <div>
         <div class="inline-flex items-center size-full static top-0 right-0 place-content-end"style="padding : 12px;">
         <img src={{ asset('images/cyberpunk-logo.jpg') }} alt="Cyberpunk logo" style = "width : 40%; height : auto; display: block; margin: 0px auto;">
-                <button class="cybr-btn">
-                S'inscrire<span aria-hidden>_</span>
-                <span class="cybr-btn__glitch">S'inscrire</span>
-                <span class="cybr-btn__tag">R25</span>
-                </button>
+                <form action={{ path('app_inscription', parameters = []) }}>
+                    <button type="submit" class="cybr-btn">
+                        S'inscrire<span aria-hidden>_</span>
+                        <span class="cybr-btn__glitch">S'inscrire</span>
+                        <span class="cybr-btn__tag">R25</span>
+                    </button>
+                </form>
                 <br></br>
 
             <div style="padding : 10px;">
 
             </div>
 
-                <button class="cybr-btn">
-                Se connecter<span aria-hidden>_</span>
-                <span class="cybr-btn__glitch">Se connecter</span>
-                <span class="cybr-btn__tag">R25</span>
-                </button>
+                <form action={{ path('app_inscription', parameters = []) }}>
+                    <button type="submit" class="cybr-btn">
+                        Se Connecter<span aria-hidden>_</span>
+                        <span class="cybr-btn__glitch">Se Connecter</span>
+                        <span class="cybr-btn__tag">R25</span>
+                    </button>
+                </form>
             <div style="padding : 10px;">
 
             </div>
@@ -41,4 +45,5 @@
             <li>Création de playlist personnalisée</li>
         </ul>
     </div>
+    <a href={{ path('app_inscription', parameters = []) }}>qldffghkoereqfpkobdg</a>
 {% endblock %}

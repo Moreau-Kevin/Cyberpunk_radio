@@ -14,10 +14,10 @@ class Product
     private ?int $id = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $name = null;
+    private ?string $Name = null;
 
     #[ORM\Column(length: 255)]
-    private ?string $namme = null;
+    private ?string $Description = null;
 
     public function getId(): ?int
     {
@@ -26,24 +26,24 @@ class Product
 
     public function getName(): ?string
     {
-        return $this->name;
+        return $this->Name;
     }
 
-    public function setName(string $name): static
+    public function setName(string $Name): static
     {
-        $this->name = $name;
+        $this->Name = $Name;
 
         return $this;
     }
 
-    public function getNamme(): ?string
+    public function getDescription(): ?string
     {
-        return $this->namme;
+        return $this->Description;
     }
 
-    public function setNamme(string $namme): static
+    public function setDescription(string $Description): static
     {
-        $this->namme = $namme;
+        $this->Description = $Description;
 
         return $this;
     }

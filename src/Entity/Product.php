@@ -19,6 +19,9 @@ class Product
     #[ORM\Column(length: 255)]
     private ?string $Description = null;
 
+    #[ORM\Column]
+    private int $Note = 0;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -44,6 +47,18 @@ class Product
     public function setDescription(string $Description): static
     {
         $this->Description = $Description;
+
+        return $this;
+    }
+
+    public function getNote(): ?int
+    {
+        return $this->Note;
+    }
+
+    public function setNote(int $Note): static
+    {
+        $this->Note = $Note;
 
         return $this;
     }

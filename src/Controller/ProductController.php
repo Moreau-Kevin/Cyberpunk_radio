@@ -54,16 +54,35 @@ class ProductController extends AbstractController
                 'No product found for id '.$name
             );
         }
-        $blablabla=implode(" ",$products);
-        echo $blablabla;
+
+        $specificProduct= $productRepository->findBy(['Name'=>$name]);
+        var_dump($specificProduct);
+        $lenght_of_array=sizeof($products);
+        for ($i=0; $i<$lenght_of_array;$i++)
+        {
+            echo $products[$i]->getName() ," ",$products[$i]->getDescription(), "<br>";
+        }
+        //var_dump($products);
+        echo  "<br>";
+        echo  "<br>";
+        //echo $products[0]->getName();
+        echo  "<br>";
+        echo  "<br>";
         return new Response('Check out this great product: ');
     }
-    
-    #[Route('/product/{id}', name: 'product_show')]
-    public function show(ProductRepository $productRepository, int $id): Response
+    /**
+     * Fetch via primary key because {id} is in the route.
+     */
+    #[Route('/product/{id}', name:'product_show')]
+    public function showByPk(Product $product): Response
     {
-        $product = $productRepository
-        ->find($id);
+        return new Response('Check out this great product: '.$product->getName());
+    }
+
+    #[Route('/product/edit/{id}', name: 'product_edit')]
+    public function update(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $product = $entityManager->getRepository(Product::class)->find($id);
 
         if (!$product) {
             throw $this->createNotFoundException(
@@ -71,10 +90,27 @@ class ProductController extends AbstractController
             );
         }
 
-        return new Response('Check out this great product: '.$product->getName());
+        $product->setName('speaker');
+        $entityManager->flush();
 
-        // or render a template
-        // in the template, print things with {{ product.name }}
-        // return $this->render('product/show.html.twig', ['product' => $product]);
+        return $this->redirectToRoute('product_show', [
+            'id' => $product->getId()
+        ]);
+    }
+    #[Route('/product/delete/{id}', name: 'product_delete')]
+    public function delete(EntityManagerInterface $entityManager, int $id): Response
+    {
+        $product = $entityManager->getRepository(Product::class)->find($id);
+
+        if (!$product) {
+            throw $this->createNotFoundException(
+                'No product found for id '.$id
+            );
+        }
+
+        $entityManager->remove($product);
+        $entityManager->flush();
+
+        return new Response('Product delete');
     }
 }

@@ -22,6 +22,9 @@ class Product
     #[ORM\Column]
     private int $Note = 0;
 
+    #[ORM\Column]
+    private ?float $Price = null;
+
     public function getId(): ?int
     {
         return $this->id;
@@ -59,6 +62,18 @@ class Product
     public function setNote(int $Note): static
     {
         $this->Note = $Note;
+
+        return $this;
+    }
+
+    public function getPrice(): ?float
+    {
+        return $this->Price;
+    }
+
+    public function setPrice(float $Price): static
+    {
+        $this->Price = $Price;
 
         return $this;
     }

@@ -30,6 +30,7 @@ class ProductController extends AbstractController
         $product->setName('mouse');
         $product->setDescription('blablabla');
         $product->setNote(3);
+        $product->setPrice(40);
         $errors = $validator->validate($product);
         if (count($errors) > 0) {
             return new Response((string) $errors, 400);
@@ -56,7 +57,7 @@ class ProductController extends AbstractController
         }
 
         $specificProduct= $productRepository->findBy(['Name'=>$name]);
-        var_dump($specificProduct);
+        echo print_r($specificProduct);
         $lenght_of_array=sizeof($products);
         for ($i=0; $i<$lenght_of_array;$i++)
         {
@@ -112,5 +113,38 @@ class ProductController extends AbstractController
         $entityManager->flush();
 
         return new Response('Product delete');
+    }
+
+    #[Route('/product/PersonnalQuery/findAllGreaterThanPrice/{minPrice}', name: 'product_findAllGreaterThanPrice')]
+    public function findAllGreaterThanPrice(EntityManagerInterface $entityManager, int $minPrice):Response
+    {
+        $products = $entityManager->getRepository(Product::class)->findAllGreaterThanPrice($minPrice);
+        $lenght_of_array=sizeof($products);
+        echo print_r($products);
+        echo "<br>";
+        echo "<br>";
+        while($element = current($products)) {
+            echo key($products)."\n";
+            next($products);
+        }
+        echo "<br>";
+        echo "<br>";
+        foreach($products[0] as $secondkey => $SecondValue)
+        {
+            echo $secondkey;
+            echo " ";
+        }
+        echo "<br>";
+        echo "<br>";
+        foreach($products as $key => $value) 
+        {
+            foreach($products[$key] as $secondkey => $SecondValue)
+            {
+                echo $SecondValue," ";
+            }
+            echo "<br>";
+            echo "<br>";
+        }
+        return new Response('Check out this great product: ');
     }
 }

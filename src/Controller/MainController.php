@@ -17,8 +17,15 @@ class MainController extends AbstractController
     #[Route('/Inscription', name: 'app_inscription')]
     public function inscription(): Response
     {
-        return$this->render('main/inscription.html.twig',[
+        return$this->render('Users/inscription.html.twig',[
             
+        ]);
+    }
+    #[Route('/RadioList', name: 'app_radiolist')]
+    public function RadioList(): Response
+    {
+        return $this->render('RadioList/RadioList.html.twig',[
+
         ]);
     }
 }

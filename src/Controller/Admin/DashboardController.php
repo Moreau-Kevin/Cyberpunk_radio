@@ -3,6 +3,7 @@
 namespace App\Controller\Admin;
 
 use App\Entity\Product;
+use App\Entity\RadioList;
 use EasyCorp\Bundle\EasyAdminBundle\Config\Dashboard;
 use EasyCorp\Bundle\EasyAdminBundle\Config\MenuItem;
 use EasyCorp\Bundle\EasyAdminBundle\Router\AdminUrlGenerator;
@@ -45,8 +46,9 @@ class DashboardController extends AbstractDashboardController
 
     public function configureMenuItems(): iterable
     {
-        yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'homepage');
+        yield MenuItem::linktoRoute('Back to the website', 'fas fa-home', 'app_homepage');
         yield MenuItem::linkToCrud('Product', 'fas fa-map-marker-alt', Product::class);
+        yield MenuItem::linkToCrud('RadioList', 'fas fa-map-marker-alt', RadioList::class);
         // yield MenuItem::linkToCrud('The Label', 'fas fa-list', EntityClass::class);
     }
 }

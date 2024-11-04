@@ -1,1 +1,11 @@
+
 {% extends 'base.html.twig' %}
+{% block body %}
+    <div class="items-center">
+        <ul>
+        {% for Radio in RadioList %}
+            <li>{{Radio.name}} {{Radio.frequency}}</li>
+        {% endfor %}
+        </ul>
+    </div>
+{% endblock %}

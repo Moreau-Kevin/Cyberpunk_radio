@@ -22,12 +22,5 @@ class MainController extends AbstractController
         ]);
     }
     
-    #[Route('/RadioList', name: 'app_radiolist')]
-    public function RadioList(): Response
-    {
-        return $this->render('RadioList/RadioList.html.twig',[
-
-        ]);
-    }
     
 }

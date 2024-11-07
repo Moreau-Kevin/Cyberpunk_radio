@@ -7,6 +7,8 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 use Doctrine\ORM\EntityManagerInterface;
 use App\Entity\RadioList;
+use Twig\Environment;
+use App\Repository\RadioListRepository;
 
 class RadioListController extends AbstractController
 {
@@ -17,14 +19,11 @@ class RadioListController extends AbstractController
             'controller_name' => 'RadioListController',
         ]);
     }
-    #[Route('/Radio_List', name: 'app_RadioList' )]
-    public function ListAllRadio(EntityManagerInterface $entityManager): Response
+    #[Route('/RadioList', name: 'app_RadioList' )]
+    public function ListAllRadio(RadioListRepository $RadioListRepository): Response
     {
-        $repository = $entityManager->getRepository(RadioList::class);
-        $RadioList= $repository->findAll();
-        //echo print_r($RadioList);
         return $this->render('RadioList/radiolist.html.twig', [
-            'RadioList' => $RadioList,
+            'RadioList' => $RadioListRepository->findAll()
         ]);
     }
 }

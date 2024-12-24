@@ -1,0 +1,15 @@
+Docker commands : 
+
+Docker list :
+
+docker container ls
+
+Connect to docker : 
+
+docker-compose exec database mysql -u username --password DB Name
+
+Export DB data : 
+
+docker exec ContainerID /usr/bin/mysqldump -u username --password=password DB Name > backup.sql  
+
+symfony console dbal:run-sql 'INSERT INTO admin (username, roles, password) VALUES ("admin", \'["ROLE_ADMIN"]'\,"$2y$13$HxFcY2XRrdRSYO/K4ejGk.Np0.9RY.tmKq5UPhGdNlb3CpfVvIfqu")'
